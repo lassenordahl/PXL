@@ -1,3 +1,3 @@
-import fire from "fire";
+var fire = require('./fire');
 
 const database = fire.database();
