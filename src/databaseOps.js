@@ -1,7 +1,3 @@
-import fire from '../fire'
-const database = fire.database();
-// use fire for all firebase operations
+import fire from "fire";
 
-getEventData => {
-    return null
-}
+const database = fire.database();
