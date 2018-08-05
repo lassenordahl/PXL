@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
-import { render } from 'react-dom';
-import Geolocation from './GeolocationTest';
 
 
 class ColorPage extends Component {
   render() {
     return (
-      <Geolocation />
-      //<span>Color Page</span>
+      <div>{JSON.stringify(this.props.longitude, this.props.latitude)}</div>
     )
+  }
+  componentDidMount() {
+    this.interval = setInterval(() => {
+      this.setState({ position: this.props.getCurrentPosition() }
+    )}, 1000);
+  }
+  componentWillUnmount() {
+    clearInterval(this.interval);
   }
 }
 
