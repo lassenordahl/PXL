@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 
 import { Link } from 'react-router-dom';
 
-import EventCard  from './EventCard.js'
+import EventCard  from './EventCard.js';
+
+import getEvents from '../databaseOps.js';
 
 class CardSelection extends Component {
     constructor(props) {
         super(props);
-
+        this.events = getEvents();
         this.state = {
             testArray : [
                 {
@@ -20,7 +22,7 @@ class CardSelection extends Component {
         console.log(this.state)
     }
 
-
+    
 
     render() {
         return (
