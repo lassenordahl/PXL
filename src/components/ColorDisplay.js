@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-
 class ColorDisplay extends Component {
     
   render() {
