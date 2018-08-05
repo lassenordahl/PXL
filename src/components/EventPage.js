@@ -1,17 +1,33 @@
 import React, { Component } from 'react';
 import ColorDisplay from "./ColorDisplay.js"
-import {getRegion} from "../databaseOps.js"
+import {getColor} from "../databaseOps.js"
 
 
 class EventPage extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      color: "#000000"
+    }
+  }
   render() {
     return (
-      <ColorDisplay
-        color="#FF0000"
-      />
+      <div>
+        latitude: {this.props.latitude}
+        longitude: {this.props.longitude}
+        <ColorDisplay
+          color={this.state.color}
+        />
+      </div>
+
     )
   }
   componentDidMount() {
+    getColor(this.props.latitude, this.props.longitude, this.props.eventId)
+      .then(color => this.setState({
+        color: color
+      }))
+    
     this.interval = setInterval(() => {
       this.props.getCurrentPosition()
     }, 1000);
