@@ -18,6 +18,12 @@ const styles = {
     bottom: 0,
     left: 0,
     margin: '25px'
+  },
+  textGroup: {
+    paddingTop: '30px'
+  },
+  text: {
+    marginTop: '0px'
   }
 }
 
@@ -65,10 +71,15 @@ class ColorDisplay extends Component {
     return (
       <div
         style = {{backgroundColor : color, width: "100vw", height: "100vh"}}
-        onClick={this.onClick}
-      >
-        { this.state.debug ? this.props.latitude : null }
-        { this.state.debug ? this.props.longitude : null }
+        onClick={this.onClick}>
+        <div style={ styles.textGroup }>
+          <p style={ styles.text }>
+            { this.state.debug ? this.props.latitude : null }
+          </p>
+          <p>
+            { this.state.debug ? this.props.longitude : null }
+          </p>
+        </div>
         <Button style = { styles.emergencyButton } variant="fab" mini aria-label="Add" onClick={this.handleClickOpen}>
           <Error style = {{ color: 'white' }}/>
         </Button>
