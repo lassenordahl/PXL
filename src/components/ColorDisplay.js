@@ -46,9 +46,9 @@ class ColorDisplay extends Component {
     var lon = this.props.longitude;
     return (
       <div style = {{backgroundColor : color, width: "100vw", height: "100vh"}}>
-        <IconButton style = { styles.emergencyButton } variant="fab" mini aria-label="Add" onClick={this.handleClickOpen}>
-          <ErrorIcon style = {{ color: 'white' }}/>
-        </IconButton>
+        <Button style = { styles.emergencyButton } variant="fab" mini aria-label="Add" onClick={this.handleClickOpen}>
+          <Error style = {{ color: 'white' }}/>
+        </Button>
         <Dialog
             open={this.state.open}
             onClose={this.handleClose}
