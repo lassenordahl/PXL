@@ -6,17 +6,12 @@ class GeolocationWrapper extends Component {
   render(){
     return(
         <GeoLocation
-        onSuccess={console.log}
         enableHighAccuracy
         render={({
           position: { coords: { latitude, longitude } = {} } = {},
           getCurrentPosition
         }) =>
-          <div>
-            latitude: {latitude}
-            longitude: {longitude}
             <ColorPage getCurrentPosition={getCurrentPosition} latitude={latitude} longitude={longitude}/>
-          </div>
       }
       />
     );
