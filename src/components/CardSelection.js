@@ -38,5 +38,4 @@ class CardSelection extends Component {
         );
   }
 }
-
 export default CardSelection;
