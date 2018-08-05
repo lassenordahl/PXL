@@ -7,12 +7,36 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
+import OutsideLands from '../assets/OutsideLands.png'
+
 const styles = {
   card: {
     margin: '30px',
     maxWidth: '450px',
     borderRadius: '30px',
-    minHeight: '300px'
+    minHeight: '300px',
+    backgroundPosition: 'center',
+    position: 'relative'
+  },
+  title: {
+    textAlign: 'left',
+    margin: '28px',
+    color: 'white'
+  },
+  description: {
+    textAlign: 'center',
+    position: 'absolute',
+    bottom: 0,
+    color: 'white',
+    width: '100%'
+  },
+  outsideLands: {
+    backgroundImage: 'url(' + require('../assets/OutsideLands.png') + ')',
+    backgroundSize: '520px'
+  },
+  coachella: {
+    backgroundImage: 'url(' + require('../assets/OutsideLands.png') + ')',
+    backgroundSize: '500px'
   }
 };
 
@@ -33,16 +57,16 @@ class EventCard extends Component {
   render() {
     return (
         <div>
-          <Card style = { styles.card } elevation={ 2 }>
-            <p>
-              Name { this.formatName(this.props.eventData.name) }
-            </p>
-            <p>
-              Length { this.props.eventData.data.resLen }
-            </p>
-            <p>
-              Width { this.props.eventData.data.resWidth }
-            </p>
+          <Card style = {{...styles.card,...styles[this.props.eventData.name]}} elevation={ 4 }>
+            <div>
+              <h3 style = { styles.title }>
+                { this.formatName(this.props.eventData.name) }
+              </h3>
+              <p style = { styles.description } >
+                Length { this.props.eventData.data.resLen }
+                Width { this.props.eventData.data.resWidth }
+              </p>
+            </div>
           </Card>
         </div>
     );
