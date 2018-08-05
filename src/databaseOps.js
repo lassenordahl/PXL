@@ -23,7 +23,6 @@ function updateEmergency(lat, lon, eventID) {
                 region.val()["lonne"] > lon &&
                 region.val()["latsw"] < lat &&
                 region.val()["lonsw"] < lon) {
-                console.log('/events/' + eventID + "/regions/" + region.key)
                 database.ref('/events/' + eventID + "/regions/" + region.key).update({
                     color: emergencyColor
                 })
@@ -103,6 +102,7 @@ function grid(lat, lon, eventID) {
     })
 }
 
+
 function rainbow(lat, lon, eventId) {
     return new Promise((resolve, reject) => {
         resolve("hsl(" + mod(lat * 200000, 100) / 100 * 360 + ", 100%, 50%)")
@@ -144,6 +144,8 @@ function getColorFunction(patternName) {
             return ocean
         case "twitch":
             return twitch
+        case "alert":
+            return grid
         default:
             return grid
     }
