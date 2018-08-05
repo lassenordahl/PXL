@@ -61,5 +61,3 @@ module.exports = {
     getEvents: getEvents,
     createEvent: createEvent
 }
-
-createEvent(37.790894,-122.401416, 37.791197, -122.401057, "Best hackathon ever??", "Outside Hacks")
