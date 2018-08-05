@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ColorDisplay from "./ColorDisplay.js"
-import {getColor} from "../databaseOps.js"
+
+import { getConfig, getColorFunction, rainbow } from "../databaseOps.js"
 
 class DemoEventPage extends Component {
   constructor(props) {
@@ -26,12 +27,15 @@ class DemoEventPage extends Component {
   }
   componentDidMount() {
     this.interval = setInterval(() => {
-      this.props.getCurrentPosition()
-      getColor(this.props.latitude, this.props.longitude, this.props.eventId)
-        .then(color => this.setState({
-          color: color
-      }))
-    }, 200);
+      this.props.getCurrentPosition();
+
+      getConfig().then(snapshot => {
+        let patternName = snapshot.val().patternName;
+        getColorFunction(patternName)(this.props.latitude, this.props.longitude, this.props.eventId).then(color => {
+          this.setState({color: color});
+        });
+      });
+    }, 1000);
   }
   componentWillUnmount() {
     clearInterval(this.interval);

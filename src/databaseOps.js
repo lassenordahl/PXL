@@ -109,15 +109,38 @@ function rainbow(lat, lon, eventId) {
     })
 }
 
+function rainbow_two(lat, lon, eventId) {
+    console.log('rainbow2')
+    return getEvents().then(snapshot => { 
+        let latne = snapshot.val()[eventId].latne;
+        let latsw = snapshot.val()[eventId].latsw;
+        let lonne = snapshot.val()[eventId].lonne;
+        let lonsw = snapshot.val()[eventId].lonsw;
+
+        let midlat = (latne + latsw) / 2;
+        let midlon = (lonne + lonsw) / 2;
+
+        let dist = Math.sqrt(((midlat - lat) * (midlat - lat)) + ((midlon - lon) * (midlon - lon)))
+
+        return new Promise((resolve, reject) => {
+            console.log("hsl(" + mod((dist) * 1000000, 100) / 100 * 360 + ", 100%, 50%)")
+            resolve("hsl(" + mod((dist) * 1000000, 100) / 100 * 360 + ", 100%, 50%)")
+        })
+    })
+}
+
 function getColorFunction(patternName) {
-    switch(patternName) {
-        case "grid":
-            return grid
-        case "rainbow":
-            return rainbow
-        default:
-            return grid
-    } 
+    // switch(patternName) {
+    //     case "grid":
+    //         return grid
+    //     case "rainbow":
+    //         return rainbow
+    //     case "rainbow_two":
+    //         return rainbow_two
+    //     default:
+    //         return grid
+    // } 
+    return rainbow_two
 }
 
 module.exports = {
