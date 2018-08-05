@@ -6,6 +6,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import { Link } from 'react-router-dom';
 
 import OutsideLands from '../assets/OutsideLands.png'
 
@@ -20,19 +21,22 @@ const styles = {
   },
   title: {
     textAlign: 'left',
-    margin: '28px',
-    color: 'white'
+    margin: '26px',
+    color: 'white',
+    textDecoration: 'none'
   },
   description: {
-    textAlign: 'center',
+    textAlign: 'left',
     position: 'absolute',
     bottom: 0,
     color: 'white',
-    width: '100%'
+    width: '90%',
+    margin: '25px',
+    textDecoration: 'none'
   },
   outsideLands: {
-    backgroundImage: 'url(' + require('../assets/OutsideLands.png') + ')',
-    backgroundSize: '520px'
+    backgroundImage: 'url(' + require('../assets/fjm.png') + ')',
+    backgroundSize: '460px'
   },
   coachella: {
     backgroundImage: 'url(' + require('../assets/OutsideLands.png') + ')',
@@ -44,7 +48,7 @@ class EventCard extends Component {
   constructor(props) {
     super(props);
 
-    console.log(props)
+    console.log(props);
 
     console.log(props.eventData);
   }
@@ -63,8 +67,7 @@ class EventCard extends Component {
                 { this.formatName(this.props.eventData.name) }
               </h3>
               <p style = { styles.description } >
-                Length { this.props.eventData.data.resLen }
-                Width { this.props.eventData.data.resWidth }
+                { this.props.eventData.data.description }
               </p>
             </div>
           </Card>

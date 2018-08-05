@@ -24,7 +24,7 @@ class Main extends Component {
         <div style = { styles.container }>
           <img style = { styles.icon } src = { require('../assets/PXL.png') } />
           <h2 style = { styles.title }>
-            AppName
+            PXL
           </h2>
         </div>
         <CardSelection/>  
