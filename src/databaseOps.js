@@ -14,6 +14,10 @@ function getEvents() {
     return events;
 }
 
+function getRegion(lat, lon, eventID, events) {
+    events[eventID]["regions"]
+}
+
 module.exports = {  
     getEvents: getEvents
 }
