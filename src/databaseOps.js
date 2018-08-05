@@ -2,7 +2,6 @@ var fire = require('./fire');
 
 const database = fire.database();
 
-getEvents();
 
 function getEvents() {
     var events  = [];
