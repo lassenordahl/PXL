@@ -35,7 +35,7 @@ class EventPage extends Component {
       if (this.props.latitude && this.props.longitude) {
         if (this.state.show) {
           this.setState({color:
-            "hsl(" + this.mod(this.props.latitude * 150000, 100) / 100 * 360 + " 100%, 50%)"
+            "hsl(" + this.mod(this.props.latitude * 150000, 100) / 100 * 360 + ", 100%, 50%)"
           })
         } else {
           getColor(this.props.latitude, this.props.longitude, this.props.eventId)
@@ -44,7 +44,7 @@ class EventPage extends Component {
           }))
         }
       }
-    }, 250);
+    }, 200);
   }
   componentWillUnmount() {
     clearInterval(this.interval);
