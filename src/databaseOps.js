@@ -105,39 +105,19 @@ function grid(lat, lon, eventID) {
 
 function rainbow(lat, lon, eventId) {
     return new Promise((resolve, reject) => {
-        resolve("hsl(" + this.mod(lat * 150000, 100) / 100 * 360 + ", 100%, 50%)")
+        resolve("hsl(" + mod(lat * 150000, 100) / 100 * 360 + ", 100%, 50%)")
     })
 }
 
-function getColorFunction() {
-    getConfig().then(snapshot => { 
-        var patternName = snapshot.val().patternName
-
-        switch(patternName) {
-            case "grid":
-                getColor = grid
-                break;
-            case "rainbow":
-                getColor = rainbow
-                break;
-            default:
-                getColor = rainbow
-        }
-    });
-}
-
-function getColorFunction() {
-    getConfig().then(snapshot => {
-        let patternName = snapshot.val().patternName
-        switch(patternName) {
-            case "grid":
-                return grid
-            case "rainbow":
-                return rainbow
-            default:
-                return rainbow
-        }
-    })
+function getColorFunction(patternName) {
+    switch(patternName) {
+        case "grid":
+            return grid
+        case "rainbow":
+            return rainbow
+        default:
+            return grid
+    } 
 }
 
 module.exports = {
@@ -147,5 +127,5 @@ module.exports = {
     getConfig: getConfig,
     updateRegionBlink: updateRegionBlink,
     updateEmergency: updateEmergency,
-    postConfig: postConfig
+    postConfig: postConfig,
 }
