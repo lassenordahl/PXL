@@ -160,8 +160,8 @@ function rainbow_two(lat, lon, eventId) {
         let dist = Math.sqrt(((midlat - lat) * (midlat - lat)) + ((midlon - lon) * (midlon - lon)))
 
         return new Promise((resolve, reject) => {
-            console.log("hsl(" + mod((dist) * 1000000, 100) / 100 * 360 + ", 100%, 50%)")
-            resolve("hsl(" + mod((dist) * 1000000, 100) / 100 * 360 + ", 100%, 50%)")
+            console.log("hsl(" + mod((dist) * 200000, 100) / 100 * 360 + ", 100%, 50%)")
+            resolve("hsl(" + mod((dist) * 200000, 100) / 100 * 360 + ", 100%, 50%)")
         })
     })
 }
