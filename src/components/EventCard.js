@@ -6,6 +6,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import { Link } from 'react-router-dom';
 
 const styles = {
   card: {
@@ -20,7 +21,7 @@ class EventCard extends Component {
   constructor(props) {
     super(props);
 
-    console.log(props)
+    console.log(props);
 
     console.log(props.eventData);
   }
@@ -32,19 +33,19 @@ class EventCard extends Component {
 
   render() {
     return (
-        <div>
-          <Card style = { styles.card } elevation={ 2 }>
-            <p>
-              Name { this.formatName(this.props.eventData.name) }
-            </p>
-            <p>
-              Length { this.props.eventData.data.resLen }
-            </p>
-            <p>
-              Width { this.props.eventData.data.resWidth }
-            </p>
-          </Card>
-        </div>
+      <Card style = { styles.card } elevation={ 2 }>
+        <Link key={ this.props.index} to={'/eventPage/' + this.props.eventData.name}>
+          <p>
+            Name { this.formatName(this.props.eventData.name) }
+          </p>
+          <p>
+            Length { this.props.eventData.data.resLen }
+          </p>
+          <p>
+            Width { this.props.eventData.data.resWidth }
+          </p>
+        </Link>
+      </Card>    
     );
   }
 }
