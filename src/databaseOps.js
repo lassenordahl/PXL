@@ -15,7 +15,7 @@ function getRegions(eventID) {
 
 function getColor(lat, lon, eventID) {
     return getRegions(eventID).then(snapshot => {
-        let color = "#000000"
+        let color = "#ffffff"
         snapshot.forEach(region => {
             if (region.val()["latne"] > lat &&
                 region.val()["lonne"] > lon &&
@@ -23,13 +23,41 @@ function getColor(lat, lon, eventID) {
                 region.val()["lonsw"] < lon)
             {
                 color = region.val()["color"]
+            } else {
             }
         })
         return color
     })   
 }
 
+function createEvent(latsw, lonsw, latne, lonne, description, eventID){
+    database.ref('/'+eventID).set({
+        latsw: latsw,
+        lonsw: lonsw,
+        latne: latne,
+        lonne: lonne,
+        description: description
+    })
+
+    var latDelta = (latne-latsw)/30
+    var lonDelta = (lonne-lonsw)/30
+
+    for(var latI = 0; latI < 30; latI++){
+        for(var lonI = 0; lonI < 30; lonI++){
+            var r = (lonI*10)%255
+            database.ref('/'+eventID+'/regions').push({
+                color: "rgb("+r.toString()+","+'0'+","+'0'+")",
+                latsw: latsw+latDelta*(latI-1),
+                lonsw: lonsw+lonDelta*(lonI-1),
+                latne: latne+latDelta*latI,
+                lonne: lonne+lonDelta*lonI
+            })
+        }
+    }
+}
+
 module.exports = {
     getColor: getColor,
-    getEvents: getEvents
+    getEvents: getEvents,
+    createEvent: createEvent
 }
