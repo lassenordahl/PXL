@@ -20,7 +20,7 @@ class CardSelection extends Component {
                     name: childSnapshot.key,
                     data: childSnapshot.val()
                 });
-                this.setState({ events: event })
+                this.setState({ events: event });
             });
         });
     }
@@ -29,10 +29,8 @@ class CardSelection extends Component {
         return (
             <div>
                 {this.state.events.map(function(event, index) {
-                    return <Link key={ index } to='/colorPage'>{ event.name }</Link>
+                    return <Link key={ index } to='/eventPage'><EventCard eventData={ event }/></Link>
                 })}
-                {/* <Link to='/colorPage'><EventCard/></Link>
-                <Link to='/colorPage'><EventCard/></Link> */}
             </div>
         );
   }
