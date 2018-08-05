@@ -126,6 +126,20 @@ function getColorFunction() {
     });
 }
 
+function getColorFunction() {
+    getConfig().then(snapshot => {
+        let patternName = snapshot.val().patternName
+        switch(patternName) {
+            case "grid":
+                return grid
+            case "rainbow":
+                return rainbow
+            default:
+                return rainbow
+        }
+    })
+}
+
 module.exports = {
     getColorFunction: getColorFunction,
     getEvents: getEvents,
