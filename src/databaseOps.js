@@ -7,30 +7,27 @@ function getEvents() {
     return database.ref('/').once('value');
 }
 
-function getRegion(lat, lon, eventID) {
-    return database.ref('/'+eventID+"/regions").orderByChild("lonne").startAt(lon).limitToFirst(1).once('value');
-    
-    // eventsRef.then(function(snapshot){
-    //     console.log("Man titties");
-    //     for (var i = 0; i < snapshot.val()[eventID]["regions"].length; i++){
-    //         if (snapshot.val()[eventID]["regions"][i]){
-    //             if (lat < snapshot.val()[eventID]["regions"][i]["latne"] &&
-    //                 lat > snapshot.val()[eventID]["regions"][i]["latsw"] &&
-    //                 lon < snapshot.val()[eventID]["regions"][i]["lonne"] &&
-    //                 lon > snapshot.val()[eventID]["regions"][i]["lonsw"]){
-    //                     color = snapshot.val()[eventID]["regions"][i]["color"];
-    //                     break;
-    //                 }
-    //         }            
-    //     }
-    // })    
+
+function getRegions(eventID) {
+    return database.ref('/' + eventID + "/regions").once('value');  
 }
 
-getRegion(4,4,"outsideLands").then(snapshot => {
-        console.log(snapshot.val());
-    }
-)
+
+function getColor(lat, lon, eventID) {
+    return getRegions(eventID).then(snapshot => {
+        let color = "#000000"
+        snapshot.forEach(region => {
+            if (region.val()["latne"] > lat &&
+                region.val()["lonne"] > lon &&
+                region.val()["latsw"] < lat &&
+                region.val()["lonsw"] < lon){
+                    color = region.val()["color"]
+                }
+        })
+        return color
+    })   
+}
 
 module.exports = {
-    getEvents: getEvents
+    getColor: getColor
 }
