@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import CardSelection from './CardSelection.js'
+import { BottomNavigation } from '../../node_modules/@material-ui/core';
 
 const styles = {
   container: {
@@ -27,6 +28,7 @@ class Main extends Component {
           </h2>
         </div>
         <CardSelection/>  
+        <BottomNavigation/>
       </div>
     );
   }
