@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-
 import Button from '@material-ui/core/Button';
-import Error from '@material-ui/icons/Error';
-import IconButton from '@material-ui/core/IconButton'
+import IconButton from '@material-ui/core/IconButton';
+import ErrorIcon from '@material-ui/icons/Error';
 
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -48,7 +47,7 @@ class ColorDisplay extends Component {
     return (
       <div style = {{backgroundColor : color, width: "100vw", height: "100vh"}}>
         <IconButton style = { styles.emergencyButton } variant="fab" mini aria-label="Add" onClick={this.handleClickOpen}>
-          <Error style = {{ color: 'white' }}/>
+          <ErrorIcon style = {{ color: 'white' }}/>
         </IconButton>
         <Dialog
             open={this.state.open}
