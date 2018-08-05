@@ -16,7 +16,7 @@ class App extends Component {
         <Switch>
           <Route exact path='/' component={Main}/>
           <Route exact path='/admin' component={AddEventPage}/>
-          <Route exact path='/patternSettings' component={PatternSettings}/>
+          <Route exact path='/patternConsole' component={PatternSettings}/>
           <Route path='/eventPage/:eventName' component={GeolocationWrapper}/>
         </Switch>        
       </div>
