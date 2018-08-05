@@ -3,9 +3,16 @@ import React, { Component } from 'react';
 import CardSelection from './CardSelection.js'
 
 const styles = {
+  container: {
+    margin: '30px'
+  },
   title: {
-    margin: '30px',
-    textAlign: 'left'
+    textAlign: 'left',
+    marginLeft: '45px'
+  },
+  icon: {
+    float: 'left',
+    width: '32px'
   }
 };
 
@@ -13,9 +20,12 @@ class Main extends Component {
   render() {
     return (
       <div>
-        <h2 style = { styles.title } >
-          AppName
-        </h2>
+        <div style = { styles.container }>
+          <img style = { styles.icon } src = { require('../assets/PXL.png') } />
+          <h2 style = { styles.title }>
+            AppName
+          </h2>
+        </div>
         <CardSelection/>  
       </div>
     );
