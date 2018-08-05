@@ -117,7 +117,8 @@ function rainbow(lat, lon, eventId) {
 
 function barcode(lat, lon, eventId) {
     return new Promise((resolve, reject) => {
-        if (mod(lat * 100000, 10) % 2 === 0) {
+        console.log(parseInt(mod(lat * 100000, 10), 10) % 2)
+        if (parseInt(mod(lat * 100000, 10), 10) % 2 === 0) {
             resolve("rgb(255,0,0)")
         } else {
             resolve("rgb(0,0,255)")
@@ -127,7 +128,7 @@ function barcode(lat, lon, eventId) {
 
 function ocean(lat, lon, eventId) {
     return new Promise((resolve, reject) => {
-        resolve("hsl(" + (((mod(lon * 150000, 100) / 200  + mod(lat * 150000, 100) / 200)) * 100) + 160 + ", 100%, 50%)")
+        resolve("hsl(" + ((((mod(lon * 150000, 100) / 200  + mod(lat * 150000, 100) / 200)) * 100) + 160) + ", 100%, 50%)")
     })
 }
 
