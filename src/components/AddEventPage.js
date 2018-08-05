@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import Paint from './PaintDisplay'
 
 import {createEvent} from '../databaseOps.js'
+
 
 const styles = {
     top: {
@@ -66,6 +68,7 @@ class AddEventPage extends Component {
                 <Button variant="contained" type="submit" color="primary" onClick={() => {this.saveNewEvent()}} >
                     Submit
                 </Button>
+                <Paint/>
             </div>
         )
     }
