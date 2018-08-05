@@ -23,7 +23,6 @@ function updateEmergency(lat, lon, eventID) {
                 region.val()["lonne"] > lon &&
                 region.val()["latsw"] < lat &&
                 region.val()["lonsw"] < lon) {
-                console.log('/events/' + eventID + "/regions/" + region.key)
                 database.ref('/events/' + eventID + "/regions/" + region.key).update({
                     color: emergencyColor
                 })
@@ -102,6 +101,7 @@ function grid(lat, lon, eventID) {
         return color
     })
 }
+
 
 function rainbow(lat, lon, eventId) {
     return new Promise((resolve, reject) => {
