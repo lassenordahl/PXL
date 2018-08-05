@@ -7,9 +7,8 @@ function getEvents() {
     return database.ref('/').once('value');
 }
 
-function getEvent(lat, lon, eventID) {
-    return database.ref('/'+eventID).once('value');
-
+function getRegion(lat, lon, eventID) {
+    return database.ref('/'+eventID+"/regions").orderByChild("lonne").startAt(lon).limitToFirst(1).once('value');
     // eventsRef.then(function(snapshot){
     //     console.log("Man titties");
     //     for (var i = 0; i < snapshot.val()[eventID]["regions"].length; i++){
@@ -25,13 +24,11 @@ function getEvent(lat, lon, eventID) {
     //     }
     // })    
 }
-var color = "blaxk"
-changeColor(1, 1, "outsideLands", color);
 
-console.log(color)
-// function getRegion(lat, lon, eventID, events) {
-    
-// }
+getRegion(4,4,"outsideLands").then(snapshot => {
+        console.log(snapshot.val());
+    }
+)
 
 module.exports = {
     getEvents: getEvents
