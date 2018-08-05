@@ -115,6 +115,8 @@ function getColorFunction(patternName) {
             return grid
         case "rainbow":
             return rainbow
+        case "alert":
+            return grid
         default:
             return grid
     } 
