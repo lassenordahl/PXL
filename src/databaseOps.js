@@ -109,6 +109,14 @@ function rainbow(lat, lon, eventId) {
     })
 }
 
+function circularRainbow(lat, lon, centerLat, centerLon, eventId) {
+    return new Promise((resolve, reject) => {
+        var distance = Math.pow(Math.pow((lat-centerLat),2)+Math.pow((lon-centerLon),2),0.5)
+        var factor = 1.0
+        resolve("hsl(" + distance*factor + ", 100%, 50%)")
+    })
+}
+
 function getColorFunction(patternName) {
     switch(patternName) {
         case "grid":
@@ -117,6 +125,8 @@ function getColorFunction(patternName) {
             return rainbow
         case "alert":
             return grid
+        case "circularRainvow":
+            return circularRainbow
         default:
             return grid
     } 
