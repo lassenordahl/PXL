@@ -7,7 +7,7 @@ function getEvents() {
     var events = [];
     var starCountRef = database.ref('/').once('value').then(function (snapshot) {
         snapshot.forEach(function (childSnapshot) {
-            events.push(childSnapshot;
+            events.push(childSnapshot);
         })
     });
     return events;
