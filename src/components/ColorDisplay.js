@@ -9,7 +9,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
-import {updateEmergency} from '../databaseOps'
+import { updateEmergency, getConfig, postConfig } from '../databaseOps'
 
 const styles = {
   emergencyButton: {
@@ -37,7 +37,21 @@ class ColorDisplay extends Component {
 
   handleClose = () => {
     this.setState({ open: false });
+
     updateEmergency(this.props.latitude, this.props.longitude, this.props.eventID)
+
+    getConfig().then(snapshot => { 
+      var newConfig = {
+          patternName: 'alert',
+          availablePatterns: []
+      }
+      snapshot.val().availablePatterns.map(value => {
+        newConfig.availablePatterns.push({
+            name: value.name,
+        });
+      })
+          postConfig(newConfig);
+      });
   };
     
   render() {
@@ -65,7 +79,7 @@ class ColorDisplay extends Component {
               <Button onClick={this.handleClose} color="primary">
                 Cancel
               </Button>
-              <Button onClick={this.handleClose} color="secondary" autoFocus>
+              <Button onClick={this.handleClose} color="secondary">
                 Confirm
               </Button>
             </DialogActions>

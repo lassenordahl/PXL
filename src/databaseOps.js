@@ -23,7 +23,6 @@ function updateEmergency(lat, lon, eventID) {
                 region.val()["lonne"] > lon &&
                 region.val()["latsw"] < lat &&
                 region.val()["lonsw"] < lon) {
-                console.log('/events/' + eventID + "/regions/" + region.key)
                 database.ref('/events/' + eventID + "/regions/" + region.key).update({
                     color: emergencyColor
                 })
@@ -92,12 +91,18 @@ function grid(lat, lon, eventID) {
     return getRegions(eventID).then(snapshot => {
         let color = "#ffffff"
         snapshot.forEach(region => {
-            if (region.val()["latne"] > lat &&
-                region.val()["lonne"] > lon &&
-                region.val()["latsw"] < lat &&
-                region.val()["lonsw"] < lon) {
-                color = region.val()["color"]
-            } else {}
+            var BreakException = {};
+            try {
+                if (region.val()["latne"] > lat &&
+                    region.val()["lonne"] > lon &&
+                    region.val()["latsw"] < lat &&
+                    region.val()["lonsw"] < lon) {
+                    color = region.val()["color"];
+                    throw BreakException
+                }
+            } catch (e) {
+                if (e !== BreakException) throw e;
+            } 
         })
         return color
     })
