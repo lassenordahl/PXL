@@ -2,22 +2,22 @@ var fire = require('./fire');
 
 const database = fire.database();
 
-getEvents();
 
 function getEvents() {
-    var events  = [];
-    var starCountRef = database.ref('/').once('value').then(function(snapshot) {
-        snapshot.forEach(function(childSnapshot){
-            events.push(childSnapshot.val());
-        })
-    });
-    return events;
+    var events = [];
+    return database.ref('/').once('value');
+    
+    // var starCountRef = database.ref('/').once('value').then(function (snapshot) {
+    //     snapshot.forEach(function (childSnapshot) {
+    //         events.push(childSnapshot);
+    //     })
+    // });
 }
 
 function getRegion(lat, lon, eventID, events) {
-    events[eventID]["regions"]
+    
 }
 
-module.exports = {  
+module.exports = {
     getEvents: getEvents
 }
