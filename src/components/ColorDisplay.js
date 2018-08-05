@@ -26,7 +26,8 @@ class ColorDisplay extends Component {
     super(props);
 
     this.state = {
-      open: false
+      open: false,
+      debug: false
     }
   }
 
@@ -53,13 +54,21 @@ class ColorDisplay extends Component {
           postConfig(newConfig);
       });
   };
+  onClick = () => {
+    this.setState({ debug: !this.state.debug });
+  };
     
   render() {
     var color = this.props.color;
     var lat = this.props.latitude;
     var lon = this.props.longitude;
     return (
-      <div style = {{backgroundColor : color, width: "100vw", height: "100vh"}}>
+      <div
+        style = {{backgroundColor : color, width: "100vw", height: "100vh"}}
+        onClick={this.onClick}
+      >
+        { this.state.debug ? this.props.latitude : null }
+        { this.state.debug ? this.props.longitude : null }
         <Button style = { styles.emergencyButton } variant="fab" mini aria-label="Add" onClick={this.handleClickOpen}>
           <Error style = {{ color: 'white' }}/>
         </Button>
