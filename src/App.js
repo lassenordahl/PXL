@@ -3,6 +3,7 @@ import './App.css';
 
 import Main from './components/Main.js'
 import AddEventPage from './components/AddEventPage.js'
+import PatternSettings from './components/PatternSettings.js'
 
 import GeolocationWrapper from './components/GeolocationWrapper.js'
 
@@ -15,6 +16,7 @@ class App extends Component {
         <Switch>
           <Route exact path='/' component={Main}/>
           <Route exact path='/admin' component={AddEventPage}/>
+          <Route exact path='/patternSettings' component={PatternSettings}/>
           <Route path='/eventPage/:eventName' component={GeolocationWrapper}/>
         </Switch>        
       </div>

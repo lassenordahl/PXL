@@ -1,29 +1,12 @@
 import React, { Component } from 'react';
 
-import ReactPaint from 'react-paint';
+import DrawableCanvas from 'react-drawable-canvas';
 
 
 class Paint extends Component {
-    constructor(props) {
-        super(props);
-    }
 
     render() {
-        const props = {
-            style: {
-                background: 'tomato',
-                /* Arbitrary css styles */
-            },
-            brushCol: '#ffffff',
-            lineWidth: 10,
-            className: 'react-paint',
-            height: 500,
-            width: 500,
-            onDraw: () => {
-                console.log('i have drawn!');
-            },
-        };
-        return (<ReactPaint { ...props}/>);
+        return <div style={{width: 500, height: 500}}> <DrawableCanvas lineWidth= {10} canvasStyle = {{backgroundColor: '#ffdab9'}} /></div>;
     }
 }
 

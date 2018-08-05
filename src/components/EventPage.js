@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import ColorDisplay from "./ColorDisplay.js"
 import {getColor} from "../databaseOps.js"
 
-
 class EventPage extends Component {
   mod(n, m) {
     return ((n % m) + m) % m;

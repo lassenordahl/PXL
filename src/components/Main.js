@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import CardSelection from './CardSelection.js'
-import BottomNav from './BottomNav.js';
+import FullScreenDialog from './FullScreenDialog.js';
+
 
 const styles = {
   container: {
@@ -12,7 +13,7 @@ const styles = {
   },
   icon: {
     float: 'left',
-    width: '32px'
+    width: '30px'
   }
 };
 
@@ -24,10 +25,10 @@ class Main extends Component {
           <img style = { styles.icon } src = { require('../assets/PXL.png') } />
           <h2 style = { styles.title }>
             PXL
+            <FullScreenDialog/>
           </h2>
         </div>
         <CardSelection/>  
-        <BottomNav/>
       </div>
     );
   }
