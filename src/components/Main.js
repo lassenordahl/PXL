@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-
 import CardSelection from './CardSelection.js'
+import BottomNav from './BottomNav.js';
 
 const styles = {
   container: {
@@ -27,6 +27,7 @@ class Main extends Component {
           </h2>
         </div>
         <CardSelection/>  
+        <BottomNav/>
       </div>
     );
   }
