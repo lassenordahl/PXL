@@ -28,14 +28,13 @@ class PatternSettings extends Component {
                 patternName: snapshot.val().patternName,
                 availablePatterns: []
             }
-            Object.keys(snapshot.val().availablePatterns).forEach(key => {
+            console.log();
+            snapshot.val().availablePatterns.map(value => {
                 newConfig.availablePatterns.push({
-                    name: key,
+                    name: value.name,
                 });
             })
             this.setState({config: newConfig})
-            console.log(this.state.config);
-
         })
     }
 
