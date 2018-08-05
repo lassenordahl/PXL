@@ -9,6 +9,7 @@ function getEvents() {
 
 function getRegion(lat, lon, eventID) {
     return database.ref('/'+eventID+"/regions").orderByChild("lonne").startAt(lon).limitToFirst(1).once('value');
+    
     // eventsRef.then(function(snapshot){
     //     console.log("Man titties");
     //     for (var i = 0; i < snapshot.val()[eventID]["regions"].length; i++){
