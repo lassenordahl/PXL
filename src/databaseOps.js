@@ -14,9 +14,18 @@ function getEvents() {
     // });
 }
 
-function getRegion(lat, lon, eventID, events) {
-    
+function changeColor(lat, lon, eventID, color) {
+    var eventsRef = getEvents();
+    eventsRef.then(function(snapshot){
+        console.log("Man titties");
+        for (var i = 0; i < snapshot.val()[eventID]["regions"].length(); i++){
+            console.log(snapshot.val()[eventID]["regions"][i])            
+        }
+        console.log(snapshot.val()[eventID]["regions"]);
+    })    
 }
+
+changeColor(1, 1, "outsideLands", "bLACK");
 
 module.exports = {
     getEvents: getEvents
