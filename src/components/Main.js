@@ -13,7 +13,7 @@ const styles = {
   },
   icon: {
     float: 'left',
-    width: '32px'
+    width: '30px'
   }
 };
 

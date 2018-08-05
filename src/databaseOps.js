@@ -2,11 +2,13 @@ var fire = require('./fire');
 
 const database = fire.database();
 
-
 function getEvents() {
     return database.ref('/events/').once('value');
 }
 
+function getConfig() {
+    return database.ref('/config/').once('value');
+}
 
 function getRegions(eventID) {
     return database.ref('/events/' + eventID + "/regions").once('value');  
@@ -59,5 +61,6 @@ function createEvent(latsw, lonsw, latne, lonne, description, eventID){
 module.exports = {
     getColor: getColor,
     getEvents: getEvents,
-    createEvent: createEvent
+    createEvent: createEvent,
+    getConfig: getConfig
 }
