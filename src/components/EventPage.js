@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 
 
-class ColorPage extends Component {
+class EventPage extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
       <div>{JSON.stringify(this.props.longitude, this.props.latitude)}</div>
@@ -17,4 +21,4 @@ class ColorPage extends Component {
   }
 }
 
-export default ColorPage;
+export default EventPage;

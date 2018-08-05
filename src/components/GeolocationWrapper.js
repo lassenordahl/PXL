@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import GeoLocation from "react-geolocation";
-import ColorPage from "./ColorPage.js"
+import EventPage from "./EventPage.js"
 
 class GeolocationWrapper extends Component {
   render(){
@@ -15,7 +15,7 @@ class GeolocationWrapper extends Component {
           <div>
             latitude: {latitude}
             longitude: {longitude}
-            <ColorPage getCurrentPosition={getCurrentPosition} latitude={latitude} longitude={longitude}/>
+            <EventPage getCurrentPosition={getCurrentPosition} latitude={latitude} longitude={longitude}/>
           </div>
       }
       />
