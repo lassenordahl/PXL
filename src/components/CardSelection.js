@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import EventCard  from './EventCard.js';
 
-import getEvents from '../databaseOps.js';
+import { getEvents } from '../databaseOps.js';
 
 class CardSelection extends Component {
     constructor(props) {
