@@ -22,10 +22,7 @@ function getColor(lat, lon, eventID) {
                 region.val()["latsw"] < lat &&
                 region.val()["lonsw"] < lon)
             {
-                console.log("Within region", region.val())
                 color = region.val()["color"]
-            } else {
-                console.log("Not within region", region.val())
             }
         })
         return color

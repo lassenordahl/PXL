@@ -7,7 +7,7 @@ class EventPage extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      color: "#000000"
+      color: "#FFFFFF"
     }
   }
   render() {
@@ -22,12 +22,15 @@ class EventPage extends Component {
 
     )
   }
-  componentDidMount() {
-    getColor(this.props.latitude, this.props.longitude, this.props.eventId)
+  componentDidUpdate(prevProps) {
+    if (this.props.latitude && this.props.longitude) {
+      getColor(this.props.latitude, this.props.longitude, this.props.eventId)
       .then(color => this.setState({
         color: color
       }))
-    
+    }
+  }
+  componentDidMount() {
     this.interval = setInterval(() => {
       this.props.getCurrentPosition()
     }, 1000);
