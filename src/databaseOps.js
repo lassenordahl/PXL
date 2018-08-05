@@ -15,7 +15,7 @@ function getRegions(eventID) {
 
 function getColor(lat, lon, eventID) {
     return getRegions(eventID).then(snapshot => {
-        let color = "#000000"
+        let color = "#ffffff"
         snapshot.forEach(region => {
             if (region.val()["latne"] > lat &&
                 region.val()["lonne"] > lon &&

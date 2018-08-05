@@ -6,7 +6,6 @@ class GeolocationWrapper extends Component {
   render(){
     return(
         <GeoLocation
-        onSuccess={console.log}
         enableHighAccuracy
         render={({
           position: { coords: { latitude, longitude } = {} } = {},
