@@ -22,6 +22,14 @@ class GeolocationWrapper extends Component {
       />
     );
   }
+
+  getScreenPosition(lat, lon, latsw, lonsw, latne, lonne) {
+    var deltaY = (latne - latsw)/30
+    var deltaX = (lonne - lonsw)/30
+    var yPos = (lat - latsw)/deltaY
+    var xPos = (lon - lonsw)/deltaX
+    return [xPos, yPos]
+  }
 }
 
 export default GeolocationWrapper;
