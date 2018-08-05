@@ -7,7 +7,7 @@ class EventPage extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      color: "#FFFFFF",
+      color: "#000000",
     }
   }
   render() {
