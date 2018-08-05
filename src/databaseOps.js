@@ -23,12 +23,14 @@ function getColor(lat, lon, eventID) {
                 region.val()["lonsw"] < lon)
             {
                 color = region.val()["color"]
+            } else {
             }
         })
         return color
     })   
 }
 
+<<<<<<< HEAD
 function createEvent(latsw, lonsw, latne, lonne, description, eventID){
     database.ref('/'+eventID).set({
         latsw: latsw,
@@ -54,6 +56,8 @@ function createEvent(latsw, lonsw, latne, lonne, description, eventID){
         }
     }
 }
+=======
+>>>>>>> ac3d16915f3db5d4a91d61a5d8b10f576056a5af
 
 module.exports = {
     getColor: getColor,
