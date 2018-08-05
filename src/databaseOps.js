@@ -15,22 +15,6 @@ function getRegions(eventID) {
     return database.ref('/events/' + eventID + "/regions").once('value');
 }
 
-
-function getColor(lat, lon, eventID) {
-    return getRegions(eventID).then(snapshot => {
-        let color = "#ffffff"
-        snapshot.forEach(region => {
-            if (region.val()["latne"] > lat &&
-                region.val()["lonne"] > lon &&
-                region.val()["latsw"] < lat &&
-                region.val()["lonsw"] < lon) {
-                color = region.val()["color"]
-            } else {}
-        })
-        return color
-    })
-}
-
 function updateEmergency(lat, lon, eventID) {
     getRegions(eventID).then(snapshot => {
         let emergencyColor = "#ff0000"
@@ -92,6 +76,43 @@ function createEvent(latsw, lonsw, latne, lonne, description, eventID) {
             })
         }
     }
+}
+
+function mod(n, m) {
+    return ((n % m) + m) % m;
+}
+
+function grid(lat, lon, eventID) {
+    return getRegions(eventID).then(snapshot => {
+        let color = "#ffffff"
+        snapshot.forEach(region => {
+            if (region.val()["latne"] > lat &&
+                region.val()["lonne"] > lon &&
+                region.val()["latsw"] < lat &&
+                region.val()["lonsw"] < lon) {
+                color = region.val()["color"]
+            } else {}
+        })
+        return color
+    })
+}
+
+function rainbow(lat, lon, eventId) {
+    return new Promise((resolve, reject) => {
+        resolve("hsl(" + this.mod(lat * 150000, 100) / 100 * 360 + ", 100%, 50%)")
+    })
+}
+
+var getColor = null
+switch(getConfig()) {
+    case "grid":
+        getColor = grid
+        break;
+    case "rainbow":
+        getColor = rainbow
+        break;
+    default:
+        getColor = rainbow
 }
 
 module.exports = {
