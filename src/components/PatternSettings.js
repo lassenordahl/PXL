@@ -28,7 +28,6 @@ class PatternSettings extends Component {
                 patternName: snapshot.val().patternName,
                 availablePatterns: []
             }
-            console.log();
             snapshot.val().availablePatterns.map(value => {
                 newConfig.availablePatterns.push({
                     name: value.name,
@@ -54,7 +53,7 @@ class PatternSettings extends Component {
             <div>
                 <TextField
                     style={ styles.textField }
-                    id="availablePatterns"
+                    id="availablePsatterns"
                     select
                     label="Select"
                     value={this.state.config.patternName}

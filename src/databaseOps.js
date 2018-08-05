@@ -26,6 +26,10 @@ function updateEmergency(lat, lon, eventID) {
                 database.ref('/events/' + eventID + "/regions/" + region.key).update({
                     color: emergencyColor
                 })
+            } else {
+                database.ref('/events/' + eventID + "/regions/" + region.key).update({
+                    color: '#000000'
+                })
             }
         })
     })
