@@ -4,11 +4,15 @@ import {getColor} from "../databaseOps.js"
 
 
 class EventPage extends Component {
+  mod(n, m) {
+    return ((n % m) + m) % m;
+  }
   constructor(props) {
     super(props)
     this.state = {
       pattern: true,
-      color: "#FFFFFF"
+      color: "#FFFFFF",
+      show: true
     }
   }
   render() {
@@ -19,6 +23,8 @@ class EventPage extends Component {
         <ColorDisplay
           color={this.state.color}
         />
+        {this.mod(this.props.latitude * 150000, 100)}
+        {this.mod(this.props.longitude * 150000, 100)}
       </div>
 
     )
@@ -26,11 +32,19 @@ class EventPage extends Component {
   componentDidMount() {
     this.interval = setInterval(() => {
       this.props.getCurrentPosition()
-      getColor(this.props.latitude, this.props.longitude, this.props.eventId)
-        .then(color => this.setState({
-          color: color
-        }))
-    }, 1000);
+      if (this.props.latitude && this.props.longitude) {
+        if (this.state.show) {
+          this.setState({color:
+            "hsl(" + this.mod(this.props.latitude * 150000, 100) / 100 * 360 + " 100%, 50%)"
+          })
+        } else {
+          getColor(this.props.latitude, this.props.longitude, this.props.eventId)
+            .then(color => this.setState({
+              color: color
+          }))
+        }
+      }
+    }, 250);
   }
   componentWillUnmount() {
     clearInterval(this.interval);
