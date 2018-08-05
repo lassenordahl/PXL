@@ -5,13 +5,30 @@ import { Link } from 'react-router-dom';
 import EventCard  from './EventCard.js'
 
 class CardSelection extends Component {
-  render() {
-    return (
-        <div>
-            <Link to='/colorPage'><EventCard/></Link>
-            <Link to='/colorPage'><EventCard/></Link>
-        </div>
-    );
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            testArray : [
+                {
+                    name: 'haha'
+                }, {
+                    name: 'what'
+                }
+            ]
+        }
+        console.log(this.state)
+    }
+
+
+
+    render() {
+        return (
+            <div>
+                <Link to='/colorPage'><EventCard/></Link>
+                <Link to='/colorPage'><EventCard/></Link>
+            </div>
+        );
   }
 }
 
