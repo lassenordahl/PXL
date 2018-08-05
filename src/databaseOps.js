@@ -89,7 +89,7 @@ function mod(n, m) {
 
 function grid(lat, lon, eventID) {
     return getRegions(eventID).then(snapshot => {
-        let color = "#ffffff"
+        let color = "#000000"
         snapshot.forEach(region => {
             var BreakException = {};
             try {
@@ -117,11 +117,7 @@ function rainbow(lat, lon, eventId) {
 
 function barcode(lat, lon, eventId) {
     return new Promise((resolve, reject) => {
-<<<<<<< HEAD
-        if (mod(lat * 100000, 10) % 2 == 0) {
-=======
         if (parseInt(mod(lat * 100000, 10), 10) % 2 === 0) {
->>>>>>> 5b8f179b320b42c0062f8f4f33e375a28b016109
             resolve("rgb(255,0,0)")
         } else {
             resolve("rgb(0,0,255)")
@@ -162,12 +158,7 @@ function rainbow_two(lat, lon, eventId) {
         let dist = Math.sqrt(((midlat - lat) * (midlat - lat)) + ((midlon - lon) * (midlon - lon)))
 
         return new Promise((resolve, reject) => {
-<<<<<<< HEAD
             resolve("hsl(" + mod((dist) * 100000, 100) / 100 * 360 + ", 100%, 50%)")
-=======
-            console.log("hsl(" + mod((dist) * 200000, 100) / 100 * 360 + ", 100%, 50%)")
-            resolve("hsl(" + mod((dist) * 200000, 100) / 100 * 360 + ", 100%, 50%)")
->>>>>>> 5b8f179b320b42c0062f8f4f33e375a28b016109
         })
     })
 }
