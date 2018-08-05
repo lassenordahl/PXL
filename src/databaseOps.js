@@ -4,7 +4,6 @@ const database = fire.database();
 
 
 function getEvents() {
-    var events = [];
     return database.ref('/').once('value');
     
     // var starCountRef = database.ref('/').once('value').then(function (snapshot) {
