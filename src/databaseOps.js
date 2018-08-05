@@ -32,5 +32,6 @@ getRegion(4,4,"outsideLands").then(snapshot => {
 )
 
 module.exports = {
-    getEvents: getEvents
+    getEvents: getEvents,
+    getRegion: getRegion
 }

@@ -1,15 +1,20 @@
 import React, { Component } from 'react';
+import ColorDisplay from "./ColorDisplay.js"
+import {getRegion} from "../databaseOps.js"
+
 
 class EventPage extends Component {
   render() {
     return (
-      <div>{JSON.stringify(this.props.longitude, this.props.latitude)}</div>
+      <ColorDisplay
+        color="#FF0000"
+      />
     )
   }
   componentDidMount() {
     this.interval = setInterval(() => {
-      this.setState({ position: this.props.getCurrentPosition() }
-    )}, 1000);
+      this.props.getCurrentPosition()
+    }, 1000);
   }
   componentWillUnmount() {
     clearInterval(this.interval);
