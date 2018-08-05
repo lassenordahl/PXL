@@ -9,7 +9,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
-import {updateEmergency} from '../databaseOps'
+import { updateEmergency, getConfig, postConfig } from '../databaseOps'
 
 const styles = {
   emergencyButton: {
@@ -26,7 +26,8 @@ class ColorDisplay extends Component {
     super(props);
 
     this.state = {
-      open: false
+      open: false,
+      debug: false
     }
   }
 
@@ -37,7 +38,24 @@ class ColorDisplay extends Component {
 
   handleClose = () => {
     this.setState({ open: false });
+
     updateEmergency(this.props.latitude, this.props.longitude, this.props.eventID)
+
+    getConfig().then(snapshot => { 
+      var newConfig = {
+          patternName: 'alert',
+          availablePatterns: []
+      }
+      snapshot.val().availablePatterns.map(value => {
+        newConfig.availablePatterns.push({
+            name: value.name,
+        });
+      })
+          postConfig(newConfig);
+      });
+  };
+  onClick = () => {
+    this.setState({ debug: !this.state.debug });
   };
     
   render() {
@@ -45,7 +63,12 @@ class ColorDisplay extends Component {
     var lat = this.props.latitude;
     var lon = this.props.longitude;
     return (
-      <div style = {{backgroundColor : color, width: "100vw", height: "100vh"}}>
+      <div
+        style = {{backgroundColor : color, width: "100vw", height: "100vh"}}
+        onClick={this.onClick}
+      >
+        { this.state.debug ? this.props.latitude : null }
+        { this.state.debug ? this.props.longitude : null }
         <Button style = { styles.emergencyButton } variant="fab" mini aria-label="Add" onClick={this.handleClickOpen}>
           <Error style = {{ color: 'white' }}/>
         </Button>
@@ -65,7 +88,7 @@ class ColorDisplay extends Component {
               <Button onClick={this.handleClose} color="primary">
                 Cancel
               </Button>
-              <Button onClick={this.handleClose} color="secondary" autoFocus>
+              <Button onClick={this.handleClose} color="secondary">
                 Confirm
               </Button>
             </DialogActions>

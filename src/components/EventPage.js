@@ -13,8 +13,6 @@ class EventPage extends Component {
   render() {
     return (
       <div>
-        latitude: {this.props.latitude}
-        longitude: {this.props.longitude}
         <ColorDisplay
           latitude={this.props.latitude}
           longitude={this.props.longitude}
@@ -35,7 +33,7 @@ class EventPage extends Component {
           this.setState({color: color});
         });
       });
-    }, 1000);
+    }, 250);
   }
   componentWillUnmount() {
     clearInterval(this.interval);

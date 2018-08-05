@@ -23,7 +23,6 @@ function updateEmergency(lat, lon, eventID) {
                 region.val()["lonne"] > lon &&
                 region.val()["latsw"] < lat &&
                 region.val()["lonsw"] < lon) {
-                console.log('/events/' + eventID + "/regions/" + region.key)
                 database.ref('/events/' + eventID + "/regions/" + region.key).update({
                     color: emergencyColor
                 })
@@ -92,20 +91,58 @@ function grid(lat, lon, eventID) {
     return getRegions(eventID).then(snapshot => {
         let color = "#ffffff"
         snapshot.forEach(region => {
-            if (region.val()["latne"] > lat &&
-                region.val()["lonne"] > lon &&
-                region.val()["latsw"] < lat &&
-                region.val()["lonsw"] < lon) {
-                color = region.val()["color"]
-            } else {}
+            var BreakException = {};
+            try {
+                if (region.val()["latne"] > lat &&
+                    region.val()["lonne"] > lon &&
+                    region.val()["latsw"] < lat &&
+                    region.val()["lonsw"] < lon) {
+                    color = region.val()["color"];
+                    throw BreakException
+                }
+            } catch (e) {
+                if (e !== BreakException) throw e;
+            } 
         })
         return color
     })
 }
 
+
 function rainbow(lat, lon, eventId) {
     return new Promise((resolve, reject) => {
-        resolve("hsl(" + mod(lat * 150000, 100) / 100 * 360 + ", 100%, 50%)")
+        resolve("hsl(" + mod(lat * 200000, 100) / 100 * 360 + ", 100%, 50%)")
+    })
+}
+
+function barcode(lat, lon, eventId) {
+    return new new Promise((resolve, reject) => {
+        if (mod(lat * 100000, 10) % 2 == 0) {
+            resolve("rgb(255,0,0)")
+        } else {
+            resolve("rgb(0,0,255)")
+
+        }
+    })
+}
+
+function ocean(lat, lon, eventId) {
+    return new Promise((resolve, reject) => {
+        resolve("hsl(" + (mod(lon * 200000, 100) / 50  + mod(lat * 200000, 100) / 50) * 100 + 160 + ", 100%, 50%)")
+    })
+}
+
+function twitch(lat, lon, eventId) {
+    return new Promise((resolve, reject) => {
+        resolve("rgb(100, 65, 164)")
+    })
+}
+
+function circularRainbow(lat, lon, centerLat, centerLon, eventId) {
+    return new Promise((resolve, reject) => {
+        var distance = Math.pow(Math.pow((lat-centerLat),2)+Math.pow((lon-centerLon),2),0.5)
+        var factor = 1.0
+        resolve("hsl(" + distance*factor + ", 100%, 50%)")
     })
 }
 
@@ -130,17 +167,24 @@ function rainbow_two(lat, lon, eventId) {
 }
 
 function getColorFunction(patternName) {
-    // switch(patternName) {
-    //     case "grid":
-    //         return grid
-    //     case "rainbow":
-    //         return rainbow
-    //     case "rainbow_two":
-    //         return rainbow_two
-    //     default:
-    //         return grid
-    // } 
-    return rainbow_two
+    switch(patternName) {
+        case "grid":
+            return grid
+        case "rainbow":
+            return rainbow
+        case "barcode":
+            return barcode
+        case "ocean":
+            return ocean
+        case "twitch":
+            return twitch
+        case "alert":
+            return grid
+        case "circularRainvow":
+            return circularRainbow
+        default:
+            return grid
+    }
 }
 
 module.exports = {
