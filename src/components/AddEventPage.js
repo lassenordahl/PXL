@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 
+import {createEvent} from '../databaseOps.js'
+
 const styles = {
     top: {
         marginTop: '20px'
@@ -30,7 +32,7 @@ class AddEventPage extends Component {
     }
 
     saveNewEvent() {
-        console.log(this.state.event)
+        createEvent(this.state.event.latsw, this.state.event.lonsw, this.state.event.latne, this.state.event.lonne, this.state.event.description, this.state.event.eventName)
     }
 
     handleChange = eventName => event => {
