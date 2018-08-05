@@ -11,9 +11,9 @@ class CardSelection extends Component {
         this.state = {
             testArray : [
                 {
-                    name: 'haha'
+                    name: 'haha',
                 }, {
-                    name: 'what'
+                    name: 'what',
                 }
             ]
         }
@@ -25,8 +25,11 @@ class CardSelection extends Component {
     render() {
         return (
             <div>
-                <Link to='/colorPage'><EventCard/></Link>
-                <Link to='/colorPage'><EventCard/></Link>
+                {this.state.testArray.map(function(event, index) {
+                    return <Link key={ index } to='/colorPage'><EventCard/></Link>
+                })}
+                {/* <Link to='/colorPage'><EventCard/></Link>
+                <Link to='/colorPage'><EventCard/></Link> */}
             </div>
         );
   }
