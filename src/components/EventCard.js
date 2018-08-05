@@ -27,7 +27,7 @@ const styles = {
     textDecoration: 'none'
   },
   outsideLands: {
-    backgroundImage: 'url(' + require('../assets/fjm.png') + ')',
+    backgroundImage: 'url(' + require('../assets/OutsideLands.png') + ')',
     backgroundSize: '460px'
   },
   coachella: {
@@ -35,7 +35,7 @@ const styles = {
     backgroundSize: '500px'
   },  
   outsideHacks: {
-    backgroundImage: 'url(' + require('../assets/OutsideLands.png') + ')',
+    backgroundImage: 'url(' + require('../assets/twitch.png') + ')',
     backgroundSize: '500px'
   }
 };

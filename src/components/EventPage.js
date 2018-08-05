@@ -33,7 +33,7 @@ class EventPage extends Component {
           this.setState({color: color});
         });
       });
-    }, 250);
+    }, 200);
   }
   componentWillUnmount() {
     clearInterval(this.interval);

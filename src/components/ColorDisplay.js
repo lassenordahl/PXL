@@ -84,6 +84,9 @@ class ColorDisplay extends Component {
           <p>
             { this.state.debug ? this.props.longitude : null }
           </p>
+          <p>
+            { this.state.debug ? this.props.color : null }
+          </p>
         </div>
         <Button style = { styles.emergencyButton } variant="fab" mini aria-label="Add" onClick={this.handleClickOpen}>
           <Error style = {{ color: 'white' }}/>

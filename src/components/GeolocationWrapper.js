@@ -22,6 +22,8 @@ class GeolocationWrapper extends Component {
       />
     );
   }
+
+
 }
 
 export default GeolocationWrapper;
