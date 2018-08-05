@@ -35,7 +35,7 @@ const styles = {
     backgroundSize: '500px'
   },  
   outsideHacks: {
-    backgroundColor: '#000000',
+    backgroundImage: 'url(' + require('../assets/OutsideLands.png') + ')',
     backgroundSize: '500px'
   }
 };

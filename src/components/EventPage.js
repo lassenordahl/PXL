@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ColorDisplay from "./ColorDisplay.js"
 import {getColor} from "../databaseOps.js"
+import {updateRegionBlink} from "../databaseOps.js"
 
 class EventPage extends Component {
   mod(n, m) {
@@ -9,9 +10,8 @@ class EventPage extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      pattern: true,
+      pattern: "blink",
       color: "#FFFFFF",
-      show: true
     }
   }
   render() {
@@ -20,6 +20,9 @@ class EventPage extends Component {
         latitude: {this.props.latitude}
         longitude: {this.props.longitude}
         <ColorDisplay
+          latitude={this.props.latitude}
+          longitude={this.props.longitude}
+          eventID={this.props.eventId}
           color={this.state.color}
         />
         {this.mod(this.props.latitude * 150000, 100)}
@@ -32,11 +35,12 @@ class EventPage extends Component {
     this.interval = setInterval(() => {
       this.props.getCurrentPosition()
       if (this.props.latitude && this.props.longitude) {
-        if (this.state.show) {
+        if (this.state.pattern == "rainbow") {
           this.setState({color:
             "hsl(" + this.mod(this.props.latitude * 150000, 100) / 100 * 360 + ", 100%, 50%)"
           })
-        } else {
+        } else if (this.state.pattern=="blink") {
+          updateRegionBlink(this.props.eventId)
           getColor(this.props.latitude, this.props.longitude, this.props.eventId)
             .then(color => this.setState({
               color: color

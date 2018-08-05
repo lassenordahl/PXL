@@ -2,12 +2,15 @@ import React, { Component } from 'react';
 
 import Button from '@material-ui/core/Button';
 import Error from '@material-ui/icons/Error';
+import IconButton from '@material-ui/core/IconButton'
 
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+
+import {updateEmergency} from '../databaseOps'
 
 const styles = {
   emergencyButton: {
@@ -35,15 +38,18 @@ class ColorDisplay extends Component {
 
   handleClose = () => {
     this.setState({ open: false });
+    updateEmergency(this.props.latitude, this.props.longitude, this.props.eventID)
   };
     
   render() {
     var color = this.props.color;
+    var lat = this.props.latitude;
+    var lon = this.props.longitude;
     return (
       <div style = {{backgroundColor : color, width: "100vw", height: "100vh"}}>
-        <Button style = { styles.emergencyButton } variant="fab" mini aria-label="Add" onClick={this.handleClickOpen}>
+        <IconButton style = { styles.emergencyButton } variant="fab" mini aria-label="Add" onClick={this.handleClickOpen}>
           <Error style = {{ color: 'white' }}/>
-        </Button>
+        </IconButton>
         <Dialog
             open={this.state.open}
             onClose={this.handleClose}
