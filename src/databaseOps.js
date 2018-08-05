@@ -147,7 +147,6 @@ function circularRainbow(lat, lon, centerLat, centerLon, eventId) {
 }
 
 function rainbow_two(lat, lon, eventId) {
-    console.log('rainbow2')
     return getEvents().then(snapshot => { 
         let latne = snapshot.val()[eventId].latne;
         let latsw = snapshot.val()[eventId].latsw;
@@ -160,8 +159,7 @@ function rainbow_two(lat, lon, eventId) {
         let dist = Math.sqrt(((midlat - lat) * (midlat - lat)) + ((midlon - lon) * (midlon - lon)))
 
         return new Promise((resolve, reject) => {
-            console.log("hsl(" + mod((dist) * 1000000, 100) / 100 * 360 + ", 100%, 50%)")
-            resolve("hsl(" + mod((dist) * 1000000, 100) / 100 * 360 + ", 100%, 50%)")
+            resolve("hsl(" + mod((dist) * 100000, 100) / 100 * 360 + ", 100%, 50%)")
         })
     })
 }
@@ -187,6 +185,7 @@ function getColorFunction(patternName) {
         default:
             return grid
     }
+    return rainbow_two
 }
 
 module.exports = {
