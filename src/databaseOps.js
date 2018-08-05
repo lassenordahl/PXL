@@ -23,11 +23,13 @@ function getColor(lat, lon, eventID) {
                 region.val()["lonsw"] < lon)
             {
                 color = region.val()["color"]
+            } else {
             }
         })
         return color
     })   
 }
+
 
 module.exports = {
     getColor: getColor,
