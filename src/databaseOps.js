@@ -121,8 +121,22 @@ switch(getConfig()) {
         getColor = rainbow
 }
 
+function getColorFunction() {
+    getConfig().then(snapshot => {
+        let patternName = snapshot.val().patternName
+        switch(patternName) {
+            case "grid":
+                return grid
+            case "rainbow":
+                return rainbow
+            default:
+                return rainbow
+        }
+    })
+}
+
 module.exports = {
-    getColor: getColor,
+    getColorFunction: getColorFunction,
     getEvents: getEvents,
     createEvent: createEvent,
     getConfig: getConfig,
