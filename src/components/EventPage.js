@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ColorDisplay from "./ColorDisplay.js"
-import {getColor} from "../databaseOps.js"
+import {getColorFunction} from "../databaseOps.js"
 
 class EventPage extends Component {
   constructor(props) {
@@ -20,8 +20,6 @@ class EventPage extends Component {
           eventID={this.props.eventId}
           color={this.state.color}
         />
-        {this.mod(this.props.latitude * 150000, 100)}
-        {this.mod(this.props.longitude * 150000, 100)}
       </div>
 
     )
@@ -29,10 +27,10 @@ class EventPage extends Component {
   componentDidMount() {
     this.interval = setInterval(() => {
       this.props.getCurrentPosition()
-      getColor(this.props.latitude, this.props.longitude, this.props.eventId)
-        .then(color => this.setState({
-          color: color
-      }))
+      getColorFunction().then(fn => fn(this.props.latitude, this.props.longitude, this.props.eventId)
+      .then(color => this.setState({
+        color: color
+      })))
     }, 200);
   }
   componentWillUnmount() {
