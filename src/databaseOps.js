@@ -39,7 +39,6 @@ function updateRegionBlink(eventID) {
                 if (region.val()["color"] != "#000000") {
                     console.log('/events/' + eventID + "/regions/" + region.key)
                     database.ref('/events/' + eventID + "/regions/" + region.key).update({
-
                         color: "#000000"
                     })
                 } else {
@@ -50,6 +49,13 @@ function updateRegionBlink(eventID) {
             })
         })
     }
+}
+
+function postConfig(config) {
+    database.ref('/config').set({
+        patternName: config.patternName,
+        availablePatterns: config.availablePatterns
+    })
 }
 
 function createEvent(latsw, lonsw, latne, lonne, description, eventID) {
@@ -121,5 +127,6 @@ module.exports = {
     createEvent: createEvent,
     getConfig: getConfig,
     updateRegionBlink: updateRegionBlink,
-    updateEmergency: updateEmergency
+    updateEmergency: updateEmergency,
+    postConfig: postConfig
 }
