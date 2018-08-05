@@ -109,20 +109,25 @@ function rainbow(lat, lon, eventId) {
     })
 }
 
-var getColor = null
-switch(getConfig()) {
-    case "grid":
-        getColor = grid
-        break;
-    case "rainbow":
-        getColor = rainbow
-        break;
-    default:
-        getColor = rainbow
+function getColorFunction() {
+    getConfig().then(snapshot => { 
+        var patternName = snapshot.val().patternName
+
+        switch(patternName) {
+            case "grid":
+                getColor = grid
+                break;
+            case "rainbow":
+                getColor = rainbow
+                break;
+            default:
+                getColor = rainbow
+        }
+    });
 }
 
 module.exports = {
-    getColor: getColor,
+    getColorFunction: getColorFunction,
     getEvents: getEvents,
     createEvent: createEvent,
     getConfig: getConfig,
