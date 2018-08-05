@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
 
-import { getConfig } from '../databaseOps.js'
+import { getConfig, postConfig } from '../databaseOps.js'
 
+import Button from '@material-ui/core/Button';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
+
+const styles = {
+    textField: {
+        width: '250px'
+    }
+}
 
 class PatternSettings extends Component {
     constructor(props) {
@@ -12,21 +19,18 @@ class PatternSettings extends Component {
         this.state = {
             config: {
                 availablePatterns: [],
-                patternName: '',
-                patternType: ''
+                patternName: ''
             }
         }
 
         getConfig().then(snapshot => { 
             var newConfig = {
                 patternName: snapshot.val().patternName,
-                patternType: snapshot.val().patternType,
                 availablePatterns: []
             }
             Object.keys(snapshot.val().availablePatterns).forEach(key => {
                 newConfig.availablePatterns.push({
                     name: key,
-                    type: snapshot.val().availablePatterns[key].type
                 });
             })
             this.setState({config: newConfig})
@@ -37,14 +41,20 @@ class PatternSettings extends Component {
 
     handleChange = eventName => event => {
         let newConfig = Object.assign({}, this.state.config);
-        newConfig[eventName] = event.target.value;
+        newConfig.patternName = event.target.value;
+
         this.setState({config: newConfig});
     };
+
+    saveConfigInformation = () => {
+        postConfig(this.state.config);
+    }
 
     render() {
         return (
             <div>
                 <TextField
+                    style={ styles.textField }
                     id="availablePatterns"
                     select
                     label="Select"
@@ -54,10 +64,13 @@ class PatternSettings extends Component {
                     margin="normal">
                         {this.state.config.availablePatterns.map(pattern => (
                             <MenuItem key={pattern.name} value={pattern.name}>
-                                {pattern.name} - {pattern.type}
+                                {pattern.name}
                             </MenuItem>
                         ))}
-                    </TextField>
+                </TextField>
+                <Button onClick={this.saveConfigInformation} color="primary">
+                    Submit
+                </Button>
             </div>
         )
     }
