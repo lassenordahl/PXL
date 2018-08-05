@@ -18,6 +18,7 @@ class CardSelection extends Component {
             snapshot.forEach(childSnapshot => {
                 var event = this.state.events.concat({
                     name: childSnapshot.key,
+                    data: childSnapshot.val()
                 });
                 this.setState({ events: event });
             });
@@ -28,10 +29,8 @@ class CardSelection extends Component {
         return (
             <div>
                 {this.state.events.map(function(event, index) {
-                    return <Link key={ index } to='/colorPage'>{ event.name }</Link>
+                    return <Link key={ index } to='/colorPage'><EventCard eventData={ event }/></Link>
                 })}
-                {/* <Link to='/colorPage'><EventCard/></Link>
-                <Link to='/colorPage'><EventCard/></Link> */}
             </div>
         );
   }
