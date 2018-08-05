@@ -7,9 +7,9 @@ function getEvents() {
     return database.ref('/').once('value');
 }
 
-function getRegion(lat, lon, eventID, events) {
+// function getRegion(lat, lon, eventID, events) {
     
-}
+// }
 
 module.exports = {
     getEvents: getEvents
