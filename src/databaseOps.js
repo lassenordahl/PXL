@@ -111,24 +111,23 @@ function grid(lat, lon, eventID) {
 
 function rainbow(lat, lon, eventId) {
     return new Promise((resolve, reject) => {
-        resolve("hsl(" + mod(lat * 200000, 100) / 100 * 360 + ", 100%, 50%)")
+        resolve("hsl(" + mod(lat * 150000, 100) / 100 * 360 + ", 100%, 50%)")
     })
 }
 
 function barcode(lat, lon, eventId) {
-    return new new Promise((resolve, reject) => {
-        if (mod(lat * 100000, 10) % 2 == 0) {
+    return new Promise((resolve, reject) => {
+        if (mod(lat * 100000, 10) % 2 === 0) {
             resolve("rgb(255,0,0)")
         } else {
             resolve("rgb(0,0,255)")
-
         }
     })
 }
 
 function ocean(lat, lon, eventId) {
     return new Promise((resolve, reject) => {
-        resolve("hsl(" + (mod(lon * 200000, 100) / 50  + mod(lat * 200000, 100) / 50) * 100 + 160 + ", 100%, 50%)")
+        resolve("hsl(" + (((mod(lon * 150000, 100) / 200  + mod(lat * 150000, 100) / 200)) * 100) + 160 + ", 100%, 50%)")
     })
 }
 
