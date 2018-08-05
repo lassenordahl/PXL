@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import ColorDisplay from "./ColorDisplay.js"
 import {getColor} from "../databaseOps.js"
 
-
 class EventPage extends Component {
   constructor(props) {
     super(props)
