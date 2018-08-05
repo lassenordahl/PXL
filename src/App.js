@@ -12,7 +12,7 @@ class App extends Component {
       <div className="App">
         <Switch>
           <Route exact path='/' component={Main}/>
-          <Route path='/colorPage' component={GeolocationWrapper}/>
+          <Route path='/eventPage/:eventName' component={GeolocationWrapper}/>
         </Switch>        
       </div>
     );

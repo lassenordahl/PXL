@@ -29,5 +29,6 @@ function getColor(lat, lon, eventID) {
 }
 
 module.exports = {
-    getColor: getColor
+    getColor: getColor,
+    getEvents: getEvents
 }

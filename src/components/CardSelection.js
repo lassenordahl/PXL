@@ -29,7 +29,7 @@ class CardSelection extends Component {
         return (
             <div>
                 {this.state.events.map(function(event, index) {
-                    return <Link key={ index } to='/colorPage'><EventCard eventData={ event }/></Link>
+                    return <Link key={ index } to={'/eventPage/' + event.name}><EventCard eventData={ event }/></Link>
                 })}
             </div>
         );
