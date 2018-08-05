@@ -10,6 +10,8 @@ class CardSelection extends Component {
     constructor(props) {
         super(props);
         this.events = getEvents();
+
+        console.log(this.events);
         this.state = {
             testArray : [
                 {
