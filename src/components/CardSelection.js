@@ -18,9 +18,8 @@ class CardSelection extends Component {
             snapshot.forEach(childSnapshot => {
                 var event = this.state.events.concat({
                     name: childSnapshot.key,
-                    data: childSnapshot.val()
                 });
-                this.setState({ events: event })
+                this.setState({ events: event });
             });
         });
     }
