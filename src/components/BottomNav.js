@@ -14,6 +14,10 @@ const styles = {
     },
   };
 
+const buttonStyles = {
+    
+}
+
 class BottomNav extends React.Component {
   state = {
     value: 0,
