@@ -6,13 +6,41 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import { Link } from 'react-router-dom';
+
+import OutsideLands from '../assets/OutsideLands.png'
 
 const styles = {
   card: {
     margin: '30px',
     maxWidth: '450px',
     borderRadius: '30px',
-    minHeight: '300px'
+    minHeight: '300px',
+    backgroundPosition: 'center',
+    position: 'relative'
+  },
+  title: {
+    textAlign: 'left',
+    margin: '26px',
+    color: 'white',
+    textDecoration: 'none'
+  },
+  description: {
+    textAlign: 'left',
+    position: 'absolute',
+    bottom: 0,
+    color: 'white',
+    width: '90%',
+    margin: '25px',
+    textDecoration: 'none'
+  },
+  outsideLands: {
+    backgroundImage: 'url(' + require('../assets/fjm.png') + ')',
+    backgroundSize: '460px'
+  },
+  coachella: {
+    backgroundImage: 'url(' + require('../assets/OutsideLands.png') + ')',
+    backgroundSize: '500px'
   }
 };
 
@@ -20,7 +48,7 @@ class EventCard extends Component {
   constructor(props) {
     super(props);
 
-    console.log(props)
+    console.log(props);
 
     console.log(props.eventData);
   }
@@ -33,16 +61,15 @@ class EventCard extends Component {
   render() {
     return (
         <div>
-          <Card style = { styles.card } elevation={ 2 }>
-            <p>
-              Name { this.formatName(this.props.eventData.name) }
-            </p>
-            <p>
-              Length { this.props.eventData.data.resLen }
-            </p>
-            <p>
-              Width { this.props.eventData.data.resWidth }
-            </p>
+          <Card style = {{...styles.card,...styles[this.props.eventData.name]}} elevation={ 4 }>
+            <div>
+              <h3 style = { styles.title }>
+                { this.formatName(this.props.eventData.name) }
+              </h3>
+              <p style = { styles.description } >
+                { this.props.eventData.data.description }
+              </p>
+            </div>
           </Card>
         </div>
     );

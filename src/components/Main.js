@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-
 import CardSelection from './CardSelection.js'
+import BottomNav from './BottomNav.js';
 
 const styles = {
   container: {
@@ -23,10 +23,11 @@ class Main extends Component {
         <div style = { styles.container }>
           <img style = { styles.icon } src = { require('../assets/PXL.png') } />
           <h2 style = { styles.title }>
-            AppName
+            PXL
           </h2>
         </div>
         <CardSelection/>  
+        <BottomNav/>
       </div>
     );
   }

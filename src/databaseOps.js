@@ -20,9 +20,10 @@ function getColor(lat, lon, eventID) {
             if (region.val()["latne"] > lat &&
                 region.val()["lonne"] > lon &&
                 region.val()["latsw"] < lat &&
-                region.val()["lonsw"] < lon){
-                    color = region.val()["color"]
-                }
+                region.val()["lonsw"] < lon)
+            {
+                color = region.val()["color"]
+            }
         })
         return color
     })   

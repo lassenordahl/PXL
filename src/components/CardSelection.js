@@ -6,6 +6,12 @@ import EventCard  from './EventCard.js';
 
 import { getEvents } from '../databaseOps.js';
 
+const styles = {
+    link: {
+        textDecoration: 'none'
+    }
+}
+
 class CardSelection extends Component {
     constructor(props) {
         super(props);
@@ -29,7 +35,7 @@ class CardSelection extends Component {
         return (
             <div>
                 {this.state.events.map(function(event, index) {
-                    return <Link key={ index } to={'/eventPage/' + event.name}><EventCard eventData={ event }/></Link>
+                    return <Link style = { styles.link } key = { index } to={'/eventPage/' + event.name}><EventCard eventData={ event }/></Link>
                 })}
             </div>
         );
