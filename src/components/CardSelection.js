@@ -9,31 +9,28 @@ import { getEvents } from '../databaseOps.js';
 class CardSelection extends Component {
     constructor(props) {
         super(props);
-        this.events = getEvents();
-
-        console.log(this.events);
+        
         this.state = {
-            testArray : [
-                {
-                    name: 'haha',
-                }, {
-                    name: 'what',
-                }
-            ]
+            events: []
         }
-        console.log(this.state)
+ 
+        getEvents().then(snapshot => {
+            snapshot.forEach(childSnapshot => {
+                var event = this.state.events.concat({
+                    name: childSnapshot.key,
+                    data: childSnapshot.val()
+                });
+                this.setState({ events: event });
+            });
+        });
     }
-
-    
 
     render() {
         return (
             <div>
-                {this.state.testArray.map(function(event, index) {
-                    return <Link key={ index } to='/colorPage'><EventCard/></Link>
+                {this.state.events.map(function(event, index) {
+                    return <Link key={ index } to='/colorPage'><EventCard eventData={ event }/></Link>
                 })}
-                {/* <Link to='/colorPage'><EventCard/></Link>
-                <Link to='/colorPage'><EventCard/></Link> */}
             </div>
         );
   }
