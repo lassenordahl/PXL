@@ -7,6 +7,8 @@ import PatternSettings from './components/PatternSettings.js'
 
 import GeolocationWrapper from './components/GeolocationWrapper.js'
 
+import SimulationPage from './components/SimulationPage'
+
 import { Switch, Route } from 'react-router-dom';
 
 class App extends Component {
@@ -18,6 +20,7 @@ class App extends Component {
           <Route exact path='/admin' component={AddEventPage}/>
           <Route exact path='/patternConsole' component={PatternSettings}/>
           <Route path='/eventPage/:eventName' component={GeolocationWrapper}/>
+          <Route exact path='/simulation' component={SimulationPage}/>
         </Switch>        
       </div>
     );
