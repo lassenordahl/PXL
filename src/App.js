@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 
 import Main from './components/Main.js'
-import ColorPage from './components/ColorPage.js'
+import GeolocationWrapper from './components/GeolocationWrapper.js'
 
 import { Switch, Route } from 'react-router-dom';
 
@@ -12,7 +12,7 @@ class App extends Component {
       <div className="App">
         <Switch>
           <Route exact path='/' component={Main}/>
-          <Route path='/colorPage' component={ColorPage}/>
+          <Route path='/eventPage/:eventName' component={GeolocationWrapper}/>
         </Switch>        
       </div>
     );
