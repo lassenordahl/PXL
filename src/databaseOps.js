@@ -117,7 +117,6 @@ function rainbow(lat, lon, eventId) {
 
 function barcode(lat, lon, eventId) {
     return new Promise((resolve, reject) => {
-        console.log(parseInt(mod(lat * 100000, 10), 10) % 2)
         if (parseInt(mod(lat * 100000, 10), 10) % 2 === 0) {
             resolve("rgb(255,0,0)")
         } else {
