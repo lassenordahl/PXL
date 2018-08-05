@@ -180,8 +180,10 @@ function getColorFunction(patternName) {
             return twitch
         case "alert":
             return grid
-        case "circularRainvow":
+        case "circularRainbow":
             return circularRainbow
+        case "rainbow_two":
+            return rainbow_two
         default:
             return grid
     }
