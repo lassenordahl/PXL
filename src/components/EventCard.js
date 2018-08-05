@@ -41,6 +41,10 @@ const styles = {
   coachella: {
     backgroundImage: 'url(' + require('../assets/OutsideLands.png') + ')',
     backgroundSize: '500px'
+  },  
+  outsideHacks: {
+    backgroundColor: '#000000',
+    backgroundSize: '500px'
   }
 };
 

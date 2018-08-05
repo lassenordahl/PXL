@@ -34,7 +34,7 @@ class AddEventPage extends Component {
     }
 
     saveNewEvent() {
-        createEvent(this.state.event.latsw, this.state.event.lonsw, this.state.event.latne, this.state.event.lonne, this.state.event.description, this.state.event.eventName)
+        createEvent(parseFloat(this.state.event.latsw), parseFloat(this.state.event.lonsw), parseFloat(this.state.event.latne), parseFloat(this.state.event.lonne), this.state.event.description, this.state.event.eventName)
     }
 
     handleChange = eventName => event => {
@@ -59,11 +59,11 @@ class AddEventPage extends Component {
                     <TextField id="lonne" label="Lon NE" value={this.state.event.lonne}
                     onChange={this.handleChange('lonne')} type="number" style={styles.textField}/>
 
-                    <TextField id="latse" label="Lat SW" value={this.state.event.latsw}
-                    onChange={this.handleChange('latse')} type="number" style={styles.textField}/>
+                    <TextField id="latsw" label="Lat SW" value={this.state.event.latsw}
+                    onChange={this.handleChange('latsw')} type="number" style={styles.textField}/>
 
-                    <TextField id="lonse" label="Lon SW" value={this.state.event.lonsw}
-                    onChange={this.handleChange('lonse')} type="number" style={styles.textField}/>
+                    <TextField id="lonsw" label="Lon SW" value={this.state.event.lonsw}
+                    onChange={this.handleChange('lonsw')} type="number" style={styles.textField}/>
                 </form>
                 <Button variant="contained" type="submit" color="primary" onClick={() => {this.saveNewEvent()}} >
                     Submit

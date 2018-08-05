@@ -4,12 +4,12 @@ const database = fire.database();
 
 
 function getEvents() {
-    return database.ref('/').once('value');
+    return database.ref('/events/').once('value');
 }
 
 
 function getRegions(eventID) {
-    return database.ref('/' + eventID + "/regions").once('value');  
+    return database.ref('/events/' + eventID + "/regions").once('value');  
 }
 
 
@@ -31,7 +31,7 @@ function getColor(lat, lon, eventID) {
 }
 
 function createEvent(latsw, lonsw, latne, lonne, description, eventID){
-    database.ref('/'+eventID).set({
+    database.ref('/events/'+eventID).set({
         latsw: latsw,
         lonsw: lonsw,
         latne: latne,
@@ -45,7 +45,7 @@ function createEvent(latsw, lonsw, latne, lonne, description, eventID){
     for(var latI = 0; latI < 30; latI++){
         for(var lonI = 0; lonI < 30; lonI++){
             var r = (lonI*10)%255
-            database.ref('/'+eventID+'/regions').push({
+            database.ref('/events/'+eventID+'/regions').push({
                 color: "rgb("+r.toString()+","+'0'+","+'0'+")",
                 latsw: latsw+latDelta*(latI-1),
                 lonsw: lonsw+lonDelta*(lonI-1),
