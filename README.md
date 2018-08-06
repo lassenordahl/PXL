@@ -13,3 +13,7 @@ PXL has extremely flexible integration of different patterns. Using an admin con
 ### Note
 
 PXL is a react application designed for mobile devices. UI formatting and geolocation services are not intended to be used on desktop.
+
+### Contributors
+
+This app was built by Wolfgang HellicksonSabelhaus, Vasanth Sadhasivan, Zach Zulanas, Bernard Zhao, and Lasse Nordahl.
