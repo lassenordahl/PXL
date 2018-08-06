@@ -100,7 +100,7 @@ class ColorDisplay extends Component {
             <DialogTitle id="alert-dialog-title">{"Emergency Alert"}</DialogTitle>
             <DialogContent>
               <DialogContentText id="alert-dialog-description">
-                You are about to send out an emergency alert to all PXL users. Are you sure you wan't to continue
+                You are about to send out an emergency alert to all PXL users. Are you sure you want to continue
               </DialogContentText>
             </DialogContent>
             <DialogActions>
