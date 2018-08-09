@@ -10,9 +10,11 @@ The homepage displays multiple events and descriptions, allowing the user to sel
 
 PXL has extremely flexible integration of different patterns. Using an admin console, the event owners can control the pattern displayed on each event. For testing, a rainbow pattern is set to use latitude to determine color.
 
-### Note
+### Notes
 
 PXL is a react application designed for mobile devices. UI formatting and geolocation services are not intended to be used on desktop.
+
+If the events page is blank, we most likely went over our firebase data limit! Please wait til next month :)
 
 ### Contributors
 
